@@ -2,9 +2,9 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -28,6 +28,9 @@ const config: Config = {
 
         xxl: "1280px",
         // => @media (min-width: 1536px) { ... }
+      },
+      fontFamily: {
+        mainloading: ["Suez One"],
       },
     },
   },
