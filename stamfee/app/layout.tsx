@@ -1,5 +1,7 @@
-import "../styles/globals.css";
 import type { Metadata } from "next";
+
+import "./globals.css";
+import Navigation from "@/components/header";
 
 export const metadata: Metadata = {
   title: {
@@ -17,7 +19,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="min-w-52 max-w-7xl m-auto">{children}</div>
+        <Navigation />
+        <div className="min-w-56 max-w-7xl m-auto">{children}</div>
       </body>
     </html>
   );

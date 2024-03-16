@@ -1,0 +1,14 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "../styles/reset.css";
+
+html,
+body {
+  background-color: #ff8e29;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
