@@ -12,6 +12,17 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      padding: {
+        logoHeight: "20%",
+      },
+      colors: {
+        myColor: {
+          orange: "#FF8E29",
+        },
+      },
+      width: {
+        "w-65": "65%",
+      },
     },
   },
   plugins: [],
