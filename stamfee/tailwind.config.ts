@@ -17,7 +17,7 @@ const config: Config = {
       },
       colors: {
         myColor: {
-          orange: "#FF8E29",
+          coffee: "##E5B486",
         },
       },
       width: {
