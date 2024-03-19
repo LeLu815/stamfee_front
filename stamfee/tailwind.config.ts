@@ -13,15 +13,26 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       padding: {
+        bottom: "20vh",
         logoHeight: "20%",
+        "mypt-1": "5px",
+        "mypt-2": "7px",
+        "mypt-3": "11px",
+        "mypt-4": "15px",
+        "mypt-5": "14px",
       },
       colors: {
         myColor: {
-          coffee: "##E5B486",
+          coffee: "#E5B486",
+          loginInfo: "rgba(31, 31, 31, 0.8)",
         },
       },
       width: {
         "w-65": "65%",
+      },
+      height: {},
+      minHeight: {
+        "sh-50": "50vh",
       },
       screens: {
         "mobile-size": "400px",
@@ -29,7 +40,7 @@ const config: Config = {
         "browser-size": "1024px",
       },
       fontSize: {
-        "small-1": "10px",
+        "small-1": "9px",
         "small-2": "11px",
         "small-3": "12px",
         "small-4": "13px",
@@ -52,6 +63,15 @@ const config: Config = {
         "browser-3": "18px",
         "browser-4": "20px",
         "browser-5": "22px",
+      },
+      boxShadow: {
+        small: "0px 2px 2px 0px rgba(0, 0, 0, 0.2)",
+        mobile: "0px 4px 4px 0px rgba(0, 0, 0, 0.2)",
+        tablet: "0px 6px 6px 0px rgba(0, 0, 0, 0.2)",
+        browser: "0px 8px 8px 0px rgba(0, 0, 0, 0.2)",
+      },
+      aspectRatio: {
+        "6/5": "6 / 5",
       },
     },
   },

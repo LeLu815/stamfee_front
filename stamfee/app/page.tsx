@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 
+// 컴포넌트
 import Logo from "@/components/logo";
 import RoundShapeButton from "@/components/design/roundShapeButton";
+import ImageComponent from "@/components/imageComponent";
+
+// tailwind 스타일
+import { textSizeInfo, loginTextMargin } from "../styles/tailwindStyleText";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -13,10 +18,12 @@ export default function Home() {
       <div className="w-3/12 mx-auto pt-logoHeight">
         <Logo color="coffee" />
       </div>
-      <div className=""></div>
-      <div className=" mx-auto w-w-65">
-        <div>
-          <div className="text-center text-small-1 mobile-size:text-mobile-1 tablet-size:text-tablet-1 browser-size:text-browser-1">
+      <div className="aspect-6/5"></div>
+      <div className="mx-auto w-w-65">
+        <div className="mb-3 mobile-size:mb-5 tablet-size:tmt-8 browser-size:mb-9">
+          <div
+            className={`${textSizeInfo.loginInfoText} text-myColor-loginInfo mb-1 mobile-size:mb-2 tablet-size:tmb-3 browser-size:mb-4`}
+          >
             이미 스탬피 회원이신가요?
           </div>
           <RoundShapeButton
@@ -25,8 +32,10 @@ export default function Home() {
             backgroundColor="coffee"
           />
         </div>
-        <div>
-          <div className="text-center mobile-size:mobile-1">
+        <div className="pb-bottom">
+          <div
+            className={`${textSizeInfo.loginInfoText} text-myColor-loginInfo mb-1 mobile-size:mb-2 tablet-size:tmb-3 browser-size:mb-4`}
+          >
             스탬피가 처음이시라면?
           </div>
           <RoundShapeButton
