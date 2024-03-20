@@ -3,5 +3,5 @@ export default function SquareCard({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="w-full aspect-square">{children}</div>;
+  return <div className="w-full aspect-square ">{children}</div>;
 }

@@ -7,8 +7,9 @@
 html,
 body {
   background-color: #e5b486;
+  -ms-overflow-style: none;
 }
 
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
   display: none;
 }

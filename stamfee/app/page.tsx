@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 // 컴포넌트
 import Logo from "@/components/logo";
 import RoundShapeButton from "@/components/design/roundShapeButton";
-import ImageComponent from "@/components/imageComponent";
+import ImageComponent from "@/components/imageSlideComponent";
+import ImageSlideComponent from "@/components/imageSlideComponent";
 
 // tailwind 스타일
 import { textSizeInfo, loginTextMargin } from "../styles/tailwindStyleText";
@@ -18,7 +19,9 @@ export default function Home() {
       <div className="w-3/12 mx-auto pt-logoHeight">
         <Logo color="coffee" />
       </div>
-      <div className="aspect-6/5"></div>
+      <div className="aspect-6/5">
+        <ImageSlideComponent imgaeList={[]} />
+      </div>
       <div className="mx-auto w-w-65">
         <div className="mb-3 mobile-size:mb-5 tablet-size:tmt-8 browser-size:mb-9">
           <div

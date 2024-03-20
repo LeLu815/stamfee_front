@@ -16,10 +16,13 @@ const config: Config = {
         bottom: "20vh",
         logoHeight: "20%",
         "mypt-1": "5px",
-        "mypt-2": "7px",
-        "mypt-3": "11px",
+        "mypt-2": "9px",
+        "mypt-3": "13px",
         "mypt-4": "15px",
         "mypt-5": "14px",
+      },
+      margin: {
+        m20: "20%",
       },
       colors: {
         myColor: {
@@ -29,6 +32,9 @@ const config: Config = {
       },
       width: {
         "w-65": "65%",
+        w60: "60%",
+        w75: "75%",
+        w80: "80%",
       },
       height: {},
       minHeight: {
