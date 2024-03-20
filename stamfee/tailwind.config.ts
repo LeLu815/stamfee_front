@@ -22,6 +22,7 @@ const config: Config = {
         "mypt-5": "14px",
       },
       margin: {
+        m10: "10%",
         m20: "20%",
       },
       colors: {
@@ -36,7 +37,10 @@ const config: Config = {
         w75: "75%",
         w80: "80%",
       },
-      height: {},
+      height: {
+        h70: "70%",
+        h85: "85%",
+      },
       minHeight: {
         "sh-50": "50vh",
       },

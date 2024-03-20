@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 
 // svg url
 import introSvg_1 from "@/public/svg/intro_img/intro_1.svg";
@@ -12,19 +13,28 @@ export default function ImageSlideComponent({
 }: {
   imgaeList: string[];
 }) {
+  const [imageNum, setImageNum] = useState(0);
+
   const imageListCheck =
     imgaeList.length !== 0 ? imgaeList : [introSvg_1, introSvg_2, introSvg_3];
 
   return (
-    <div className="w-w80 mx-auto aspect-square overflow-auto overflow-x-scroll snap-x snap-mandatory flex">
-      {imageListCheck.map((value, index) => (
-        <Image
-          className="snap-center w-w60 mx-m20"
-          key={index}
-          src={value}
-          alt="광고 페이지 이미지"
-        />
-      ))}
-    </div>
+    <>
+      <div className="w-w80 mx-auto aspect-square overflow-auto overflow-x-scroll snap-x snap-mandatory flex">
+        {imageListCheck.map((value, index) => (
+          <Image
+            className="snap-center w-w80 mx-m20 max-h object-cover h-h85 mt-auto"
+            key={index}
+            src={value}
+            alt="광고 페이지 이미지"
+          />
+        ))}
+      </div>
+      <div>
+        {imageListCheck.map((value, index) => (
+          <Image src={} />
+        ))}
+      </div>
+    </>
   );
 }
