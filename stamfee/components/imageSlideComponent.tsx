@@ -7,6 +7,7 @@ import { useInView } from "react-intersection-observer";
 
 // import custom components
 import ImageSlideImageComponent from "./ImageSlideImageComponent";
+import ImageSlideIndexButtonComponent from "./ImageSlideIndexButtonComponent";
 
 // svg url
 import introSvg_1 from "@/public/svg/intro_img/intro_1.svg";
@@ -31,19 +32,6 @@ export default function ImageSlideComponent({
     },
     [setImageNum]
   );
-  // const childrenRef = useRef<null[] | HTMLDivElement[]>([]);
-  // const [ref, inView, entry] = useInView({
-  //   root: parentRef.current,
-  //   threshold: 0.5,
-  // });
-
-  // const setRefs = useCallback(
-  //   (node:HTMLDivElement | null, num:number) => {
-  //     childrenRef.current[num] = node;
-  //     ref(node);
-  //   },
-  //   [ref],
-  // );
 
   return (
     <>
@@ -59,19 +47,15 @@ export default function ImageSlideComponent({
             parentElement={parentRef.current}
             changeFun={changeImageIndex}
           />
-          // <Image
-          //   className="snap-center w-w80 mx-m20 max-h object-cover h-h85 mt-auto"
-          //   key={index}
-          //   src={value}
-          //   alt="광고 페이지 이미지"
-          // />
         ))}
       </div>
-      <div>
-        {imageNum}
+      <div className="w-w60 mx-auto aspect-6/1 flex justify-center gap-gap3 mb-m10">
         {imageListCheck.map((value, index) => (
-          <></>
-          // <Image src={} />
+          <ImageSlideIndexButtonComponent
+            key={index}
+            myNum={index}
+            currentNum={imageNum}
+          />
         ))}
       </div>
     </>

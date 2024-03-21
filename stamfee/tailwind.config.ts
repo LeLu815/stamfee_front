@@ -82,6 +82,10 @@ const config: Config = {
       },
       aspectRatio: {
         "6/5": "6 / 5",
+        "6/1": "6 / 1",
+      },
+      gap: {
+        gap3: "3%",
       },
     },
   },
