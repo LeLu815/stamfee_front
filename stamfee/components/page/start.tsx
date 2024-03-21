@@ -11,22 +11,26 @@ export default function StartPage() {
   return (
     <div className="aspect-6/5 relative">
       <div
-        className="invisible absolute w-20 h-full tablet-size:visible hover:cursor-pointer"
+        className="invisible absolute w-20 h-full tablet-size:visible"
         style={{ top: "50%", left: "10%" }}
-        onClick={() => {
-          setIncrease((value) => ++value);
-        }}
       >
-        <div className="relative w-w80 aspect-square after:top-[25%] after:left-[35%] after:absolute after:w-w50 after:aspect-square after:border-solid after:border-r-2 after:border-t-2 after:rotate-225 after:border-gray-800 z-30"></div>
+        <div
+          onClick={() => {
+            setIncrease((value) => ++value);
+          }}
+          className="hover:cursor-pointer relative w-w80 aspect-square after:top-[25%] after:left-[35%] after:absolute after:w-w50 after:aspect-square after:border-solid after:border-r-2 after:border-t-2 after:rotate-225 after:border-gray-800 z-30"
+        ></div>
       </div>
       <div
-        className="invisible absolute w-20 h-full tablet-size:visible hover:cursor-pointer"
+        className="invisible absolute w-20 h-full tablet-size:visible"
         style={{ top: "50%", right: "10%" }}
-        onClick={() => {
-          setDecrease((value) => ++value);
-        }}
       >
-        <div className="relative w-w80 aspect-square after:top-[25%] after:left-[35%] after:absolute after:w-w50 after:aspect-square after:border-solid after:border-r-2 after:border-t-2 after:rotate-45 after:border-gray-800 z-30"></div>
+        <div
+          onClick={() => {
+            setDecrease((value) => ++value);
+          }}
+          className="hover:cursor-pointer relative w-w80 aspect-square after:top-[25%] after:left-[35%] after:absolute after:w-w50 after:aspect-square after:border-solid after:border-r-2 after:border-t-2 after:rotate-45 after:border-gray-800 z-30"
+        ></div>
       </div>
       <ImageSlideComponent
         imgaeList={[]}
