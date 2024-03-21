@@ -95,9 +95,7 @@ const config: Config = {
       rotate: {
         225: "225deg",
       },
-      left: {
-        left10: "10%",
-      },
+      spacing: {},
     },
   },
   plugins: [],

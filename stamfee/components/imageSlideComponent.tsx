@@ -2,7 +2,7 @@
 
 //
 import Image from "next/image";
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
 // import custom components
@@ -16,8 +16,12 @@ import introSvg_3 from "@/public/svg/intro_img/intro_3.svg";
 
 export default function ImageSlideComponent({
   imgaeList,
+  isIncrease,
+  isDecrease,
 }: {
   imgaeList: string[];
+  isIncrease: number;
+  isDecrease: number;
 }) {
   // imgaeList 값 결정
   const imageListCheck =
@@ -25,6 +29,7 @@ export default function ImageSlideComponent({
 
   const [imageNum, setImageNum] = useState(0);
   const parentRef = useRef<null | HTMLDivElement>(null);
+  const middleRef = useRef<null | HTMLDivElement>(null);
 
   const changeImageIndex = useCallback(
     (index: number) => {
@@ -33,10 +38,27 @@ export default function ImageSlideComponent({
     [setImageNum]
   );
 
+  useEffect(() => {
+    if (imageNum <= imageListCheck.length - 1) {
+      const wantToMove = parentRef.current?.clientWidth || 0;
+      if (parentRef.current) {
+        parentRef.current.scrollLeft -= wantToMove;
+      }
+    }
+  }, [isIncrease]);
+  useEffect(() => {
+    if (imageNum >= 0) {
+      const wantToMove = parentRef.current?.clientWidth || 0;
+      if (parentRef.current) {
+        parentRef.current.scrollLeft += wantToMove;
+      }
+    }
+  }, [isDecrease]);
+
   return (
     <>
       <div
-        className="w-w80 mx-auto aspect-square overflow-auto overflow-x-scroll snap-x snap-mandatory flex"
+        className="w-w80 mx-auto aspect-square overflow-auto overflow-x-scroll snap-x snap-mandatory flex scroll-smooth"
         ref={parentRef}
       >
         {imageListCheck.map((value, index) => (
