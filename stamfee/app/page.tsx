@@ -19,7 +19,19 @@ export default function Home() {
       <div className="w-3/12 mx-auto pt-logoHeight">
         <Logo color="coffee" />
       </div>
-      <div className="aspect-6/5">
+      <div className="aspect-6/5 relative">
+        <div
+          className="invisible absolute w-20 h-full tablet-size:visible"
+          style={{ left: "10%", top: "50%" }}
+        >
+          <div className="relative w-w80 aspect-square after:absolute after:w-w50 after:aspect-square after:border-solid after:border-r-2 after:border-t-2 after:rotate-225 after:border-gray-800 z-30"></div>
+        </div>
+        <div
+          className="invisible absolute w-20 h-full tablet-size:visible"
+          style={{ top: "50%", right: "5%" }}
+        >
+          <div className="relative w-w80 aspect-square after:absolute after:w-w50 after:aspect-square after:border-solid after:border-r-2 after:border-t-2 after:rotate-45 after:border-gray-800 z-30"></div>
+        </div>
         <ImageSlideComponent imgaeList={[]} />
       </div>
       <div className="mx-auto w-w-65">
