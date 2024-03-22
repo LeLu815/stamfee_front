@@ -10,7 +10,7 @@ import StartPage from "@/components/page/start";
 import { textSizeInfo, loginTextMargin } from "../styles/tailwindStyleText";
 
 export const metadata: Metadata = {
-  title: "Home",
+  title: "Stamfee",
 };
 
 export default function Home() {

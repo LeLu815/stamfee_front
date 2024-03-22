@@ -2,11 +2,9 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 
+// app router를 사용하면 동적 메타데이터 세팅이 바뀐다.
 export const metadata: Metadata = {
-  title: {
-    template: "%s | Stamfee",
-    default: "Welcome",
-  },
+  title: { default: "Welcome", template: "%s | Stamfee" },
   description: "coffee and stamp",
 };
 
