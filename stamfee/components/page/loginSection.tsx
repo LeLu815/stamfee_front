@@ -13,7 +13,9 @@ export default function LoginSection() {
     if (value.length > 11) {
       return;
     }
-    if (value === "" || parseInt(value) === 0 || Boolean(parseInt(value))) {
+
+    const reg = /^([0-9])*$/;
+    if (value === "" || reg.test(value)) {
       setInputNumCheck(true);
       setPhoneNum(value);
     } else {
@@ -37,6 +39,7 @@ export default function LoginSection() {
             onChange={handleChangeInputValue}
             className="tracking-wide mobile-size:tracking-wider tablet-size:-widest browser-size:tracking-wwww    text-small-2 mobile-size:text-small-5 tablet-size:text-mobile-5 browser-size:text-big-3  pl-p10 bg-myColor-loginInput w-full rounded-l-md line-break:rounded-l-xl tablet-size:rounded-l-2xl"
             value={phoneNum}
+            type="text"
           />
           <div className="w-w25 line-break:w-w23 tablet-size:w-25  flex justify-center items-center bg-black rounded-r-md line-break:rounded-r-xl tablet-size:rounded-r-2xl">
             <span className="m-auto text-white text-small-1 mobile-size:text-small-5 tablet-size:text-mobile-3 browser-size:text-big-1">
