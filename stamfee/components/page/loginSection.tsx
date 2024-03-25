@@ -4,9 +4,15 @@ import { tree } from "next/dist/build/templates/app-page";
 import { useState } from "react";
 
 export default function LoginSection() {
+  // 로그인 스텝
+  const [step, setStep] = useState<number>(1);
+
+  // 스텝 1 : 핸드폰 번호
   const [phoneNum, setPhoneNum] = useState<number | string>("");
   const [inputNumCheck, setInputNumCheck] = useState(true);
-  const [] = useState();
+
+  // 스텝 2 : 인증 번호
+  const [certifiNum, setCertifiNum] = useState();
 
   const handleChangeInputValue = (e: React.ChangeEvent<HTMLElement>) => {
     const value = (e.target as HTMLInputElement).value;
@@ -37,7 +43,10 @@ export default function LoginSection() {
         <div className="flex justify-between bg-amber-200 w-full mt-m02 aspect-[7/1] mobile-size:aspect-[8/1] tablet-size:aspect-[10/1] rounded-md line-break:rounded-xl tablet-size:rounded-2xl">
           <input
             onChange={handleChangeInputValue}
-            className="tracking-wide mobile-size:tracking-wider tablet-size:-widest browser-size:tracking-wwww    text-small-2 mobile-size:text-small-5 tablet-size:text-mobile-5 browser-size:text-big-3  pl-p10 bg-myColor-loginInput w-full rounded-l-md line-break:rounded-l-xl tablet-size:rounded-l-2xl"
+            className={`${
+              !inputNumCheck &&
+              "border-t-2 border-l-2 border-b-2 border-red-600 border-solid"
+            } tracking-wide mobile-size:tracking-wider tablet-size:-widest browser-size:tracking-wwww text-small-2 mobile-size:text-small-5 tablet-size:text-mobile-5 browser-size:text-big-3  pl-p10 bg-myColor-loginInput w-full rounded-l-md line-break:rounded-l-xl tablet-size:rounded-l-2xl`}
             value={phoneNum}
             type="text"
           />
