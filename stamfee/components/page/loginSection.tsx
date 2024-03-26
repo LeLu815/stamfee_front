@@ -1,6 +1,5 @@
 "use client";
 
-import { tree } from "next/dist/build/templates/app-page";
 import { useState } from "react";
 
 export default function LoginSection() {
@@ -10,6 +9,7 @@ export default function LoginSection() {
   // 스텝 1 : 핸드폰 번호
   const [phoneNum, setPhoneNum] = useState<number | string>("");
   const [inputNumCheck, setInputNumCheck] = useState(true);
+  const [inputNumResult, setInputNumResult] = useState<string | boolean>("");
 
   // 스텝 2 : 인증 번호
   const [certifiNum, setCertifiNum] = useState<number | string>("");
@@ -25,6 +25,7 @@ export default function LoginSection() {
     const reg = /^([0-9])*$/;
     if (value === "" || reg.test(value)) {
       setInputNumCheck(true);
+      setInputNumResult(true);
       setPhoneNum(value);
     } else {
       setInputNumCheck(false);
@@ -55,6 +56,9 @@ export default function LoginSection() {
           </span>
           <span className="line-break:ml-m01 font-semibold text-red-600 text-small-0 small-size:text-small-1 mobile-size:text-small-2 tablet-size:text-small-3 browser-size:text-small-4">
             {!inputNumCheck && "올바른 형식의 번호를 입력해주세요( - 제외)"}
+            {!inputNumResult &&
+              inputNumResult !== "" &&
+              "회원가입 이력이 없는 번호입니다."}
           </span>
         </div>
         <div className="flex justify-between bg-amber-200 w-full mt-m02 aspect-[7/1] mobile-size:aspect-[8/1] tablet-size:aspect-[10/1] rounded-md line-break:rounded-xl tablet-size:rounded-2xl">

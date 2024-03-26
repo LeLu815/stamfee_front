@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "login",
+  title: "회원가입",
 };
 
 import LoginSection from "@/components/page/loginSection";
