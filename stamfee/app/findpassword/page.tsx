@@ -5,10 +5,12 @@ export const metadata: Metadata = {
 };
 
 import LoginSection from "@/components/page/loginSection";
+import Loading from "@/components/loading";
 
 export default function FindPasswordPage() {
   return (
     <div>
+      <Loading loadingStatus={true} />
       <div className="w-w80 mx-auto">
         <div className="aspect-[10/1] flex items-end">
           <div className="relative mb-px w-small-3 mobile-size:w-browser-2 tablet-size:w-browser-3 browser-size:w-browser-4 aspect-square">

@@ -40,7 +40,9 @@ const config: Config = {
           coffee: "#E5B486",
           loginInfo: "rgba(31, 31, 31, 0.8)",
           loginInput: "rgba(247, 247, 247, 1)",
-          loginInputBorder: "",
+          loadingBg: "rgba(255, 255, 255, 0.5)",
+          loadingBtn: "rgba(217, 217, 217, 1)",
+          loadingBtnFill: "rgba(255, 196, 143, 1)",
         },
       },
       width: {
@@ -134,11 +136,13 @@ const config: Config = {
         mobile: "0px 4px 4px 0px rgba(0, 0, 0, 0.2)",
         tablet: "0px 6px 6px 0px rgba(0, 0, 0, 0.2)",
         browser: "0px 8px 8px 0px rgba(0, 0, 0, 0.2)",
+        loading: "0px 4px 8px 0px rgba(0, 0, 0, 0.25)",
       },
       aspectRatio: {
         "5/1": "5 / 1",
         "4/1": "4 / 1",
         "3/1": "3 / 1",
+        "5/2": "5 / 2",
         "7/1": "7 / 1",
         "7/2": "7 / 2",
         "6/5": "6 / 5",
@@ -152,6 +156,8 @@ const config: Config = {
         gap2: "2%",
         gap3: "3%",
         gap5: "5%",
+        gap7: "7%",
+        gap9: "9%",
       },
       rotate: {
         225: "225deg",
@@ -159,6 +165,9 @@ const config: Config = {
       spacing: {},
       letterSpacing: {
         wwww: "0.3rem",
+      },
+      backdropBlur: {
+        4: "4px",
       },
     },
   },

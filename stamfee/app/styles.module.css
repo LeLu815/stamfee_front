@@ -1,0 +1,26 @@
+.loader {
+  transition: all 0.4s;
+}
+
+.box-load1 {
+  background-color: rgba(255, 196, 143, 1);
+  animation: brighten 1.2s infinite;
+}
+
+.box-load2 {
+  background-color: rgba(255, 196, 143, 1);
+  animation: brighten 1.2s infinite;
+  animation-delay: 0.2s;
+}
+
+.box-load3 {
+  background-color: rgba(255, 196, 143, 1);
+  animation: brighten 1.2s infinite;
+  animation-delay: 0.4s;
+}
+
+@keyframes brighten {
+  100% {
+    background-color: rgba(217, 217, 217, 1);
+  }
+}
