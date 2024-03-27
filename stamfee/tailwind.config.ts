@@ -26,6 +26,9 @@ const config: Config = {
         "mypt-3": "13px",
         "mypt-4": "15px",
         "mypt-5": "14px",
+        ppx15: "15px",
+        ppx30: "30px",
+        ppx60: "60px",
       },
       margin: {
         m01: "1%",

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 import styles from "../app/styles.module.css";
 
-export default function Loading(props: { loadingStatus: boolean }) {
+export default function Loading() {
   useEffect(() => {
     document.body.style.cssText = `
       position: fixed; 
@@ -19,12 +19,11 @@ export default function Loading(props: { loadingStatus: boolean }) {
   }, []);
 
   return (
-    <div
-      className={`fixed top-0 left-0 right-0 bottom-0 ${
-        !props.loadingStatus && "hidden"
-      }`}
-    >
-      <div className="backdrop-blur-4 min-w-44 rounded-md mobile-size:rounded-lg tablet-size:rounded-xl browser-size:rounded-2xl shadow-browser bg-myColor-loadingBg w-w75 aspect-5/2 m-auto mt-m20 flex justify-center items-center flex-col gap-gap9">
+    <div className={`fixed top-0 left-0 right-0 bottom-0`}>
+      <div
+        style={{ maxWidth: "785px" }}
+        className="backdrop-blur-4 min-w-44 rounded-md mobile-size:rounded-lg tablet-size:rounded-xl browser-size:rounded-2xl shadow-browser bg-myColor-loadingBg w-w75 aspect-5/2 m-auto mt-m20 flex justify-center items-center flex-col gap-gap9"
+      >
         <div className={`${styles.loader} flex justify-center gap-gap7 w-w50`}>
           <div
             className={`${styles["box-load1"]} bg-myColor-loadingBtn rounded-full  w-1 h-1 mobile-size:w-2 mobile-size:h-2 tablet-size:w-3 tablet-size:h-3 browser-size:w-4 browser-size:h-4`}

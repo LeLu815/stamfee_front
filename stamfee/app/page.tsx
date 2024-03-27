@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <div className="w-3/12 mx-auto pt-logoHeight">
+      <div style={{ paddingTop: "18%" }} className="w-3/12 mx-auto">
         <Logo color="coffee" />
       </div>
       <StartPage />
