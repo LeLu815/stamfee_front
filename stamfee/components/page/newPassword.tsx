@@ -1,49 +1,55 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export default function NewPasswordSection() {
-  // 로그인 스텝
-  const [step, setStep] = useState<number>(1);
+  const passwordRef = useRef<HTMLInputElement | null>(null);
+  const [password, setPassword] = useState<string>("");
+  const [checkPassword, setCheckPassword] = useState<string | boolean>("");
 
-  // 스텝 1 : 핸드폰 번호
-  const [phoneNum, setPhoneNum] = useState<number | string>("");
-  const [inputNumCheck, setInputNumCheck] = useState(true);
-  const [inputNumResult, setInputNumResult] = useState<string | boolean>("");
+  const passwordConfirmRef = useRef<HTMLInputElement | null>(null);
+  const [passwordConfirm, setPasswordConfirm] = useState<string>("");
+  const [checkPasswordConfirm, setCheckPasswordConfirm] = useState<
+    string | boolean
+  >("");
 
-  // 스텝 2 : 인증 번호
-  const [certifiNum, setCertifiNum] = useState<number | string>("");
-  const [certifiCheck, setCertifiCheck] = useState(true);
-  const [certifiResult, setCertifiResult] = useState<string | boolean>("");
-
-  const handleChangeInputValue = (e: React.ChangeEvent<HTMLElement>) => {
+  // const reg = /^(?=.[a-zA-Z])((?=.\d)|(?=.*\W)).{6,20}$/;
+  // password
+  const handleChangePassword = (e: React.ChangeEvent<HTMLElement>) => {
+    setCheckPassword("");
     const value = (e.target as HTMLInputElement).value;
-    if (value.length > 11) {
+    if (value.length > 20) {
       return;
     }
+    setPassword(value);
+  };
+  const handleCheckpasswodCorrect = (e: React.ChangeEvent<HTMLElement>) => {
+    const reg1 = /^(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,20}$/;
+    const reg2 = /^(?=.*[A-Za-z])(?=.*[$@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,20}$/;
+    const reg3 = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{6,20}$/;
+    const value = (e.target as HTMLInputElement).value;
 
-    const reg = /^([0-9])*$/;
-    if (value === "" || reg.test(value)) {
-      setInputNumCheck(true);
-      setInputNumResult(true);
-      setPhoneNum(value);
+    if (reg1.test(value) || reg2.test(value) || reg3.test(value)) {
+      setCheckPassword(true);
     } else {
-      setInputNumCheck(false);
+      setCheckPassword(false);
     }
   };
-  const handleChangeCertifiValue = (e: React.ChangeEvent<HTMLElement>) => {
-    setCertifiResult("");
+
+  // passwordConfirm
+  const handleChangePasswordConfirm = (e: React.ChangeEvent<HTMLElement>) => {
+    setCheckPasswordConfirm("");
     const value = (e.target as HTMLInputElement).value;
-    if (value.length > 6) {
+    if (value.length > 20) {
       return;
     }
-
-    const reg = /^([0-9])*$/;
-    if (value === "" || reg.test(value)) {
-      setCertifiCheck(true);
-      setCertifiNum(value);
+    setPasswordConfirm(value);
+  };
+  const handleCheckPasswordSame = (e: React.ChangeEvent<HTMLElement>) => {
+    if (password === passwordConfirm) {
+      setCheckPasswordConfirm(true);
     } else {
-      setCertifiCheck(false);
+      setCheckPasswordConfirm(false);
     }
   };
 
@@ -52,64 +58,61 @@ export default function NewPasswordSection() {
       <div className="aspect-square">
         <div className="pt-p13 flex flex-col line-break:flex-row line-break:items-center">
           <span className="font-semibold text-small-2 mobile-size:text-mobile-1 tablet-size:text-tablet-1 browser-size:text-browser-2">
-            휴대폰 번호
+            비밀번호
           </span>
           <span className="line-break:ml-m01 font-semibold text-red-600 text-small-0 small-size:text-small-1 mobile-size:text-small-2 tablet-size:text-small-3 browser-size:text-small-4">
-            {!inputNumCheck && "올바른 형식의 번호를 입력해주세요( - 제외)"}
-            {!inputNumResult &&
-              inputNumResult !== "" &&
-              "회원가입 이력이 없는 번호입니다."}
+            {checkPassword !== "" &&
+              !checkPassword &&
+              "비밀번호 규정을 확인해주세요"}
+          </span>
+          <span className="line-break:ml-m01 font-semibold text-green-600 text-small-0 small-size:text-small-1 mobile-size:text-small-2 tablet-size:text-small-3 browser-size:text-small-4">
+            {checkPassword && "규정에 맞아요"}
           </span>
         </div>
-        <div className="flex justify-between bg-amber-200 w-full mt-m02 aspect-[7/1] mobile-size:aspect-[8/1] tablet-size:aspect-[10/1] rounded-md line-break:rounded-xl tablet-size:rounded-2xl">
+        <div className="flex justify-between bg-myColor-loginInput w-full mt-m02 aspect-[7/1] mobile-size:aspect-[8/1] tablet-size:aspect-[10/1] rounded-md line-break:rounded-xl tablet-size:rounded-2xl">
           <input
-            onChange={handleChangeInputValue}
+            ref={passwordRef}
+            onBlur={handleCheckpasswodCorrect}
+            onChange={handleChangePassword}
             className={`${
-              !inputNumCheck &&
-              "border-t-2 border-l-2 border-b-2 border-red-600 border-solid"
-            } tracking-wide mobile-size:tracking-wider tablet-size:-widest browser-size:tracking-wwww text-small-2 mobile-size:text-small-5 tablet-size:text-mobile-5 browser-size:text-big-3  pl-p10 bg-myColor-loginInput w-full rounded-l-md line-break:rounded-l-xl tablet-size:rounded-l-2xl`}
-            value={phoneNum}
-            type="text"
+              checkPassword !== "" &&
+              !checkPassword &&
+              "border-2 border-red-600 border-solid"
+            } w-full focus:border-2-black tracking-wide mobile-size:tracking-wider tablet-size:-widest browser-size:tracking-wwww text-small-2 mobile-size:text-small-5 tablet-size:text-mobile-5 browser-size:text-big-3  pl-p10 bg-myColor-loginInput rounded-md line-break:rounded-xl tablet-size:rounded-2xl`}
+            value={password}
+            type="password"
           />
-          <div className="w-w25 line-break:w-w23 tablet-size:w-25  flex justify-center items-center bg-black rounded-r-md line-break:rounded-r-xl tablet-size:rounded-r-2xl">
-            <span className="m-auto text-white text-small-1 mobile-size:text-small-5 tablet-size:text-mobile-3 browser-size:text-big-1">
-              확인
-            </span>
-          </div>
         </div>
-        <div className="cursor-pointer underline underline-offset-2 decoration-from-font font-extralight pt-p2 text-small-1 mobile-size:text-small-2 tablet-size:text-small-4 browser-size:text-tablet-1">
-          인증번호가 오지 않았나요? 재전송
+        <div className="cursor-pointer decoration-from-font font-extralight pt-p2 text-small-1 mobile-size:text-small-2 tablet-size:text-small-4 browser-size:text-tablet-1">
+          특수문자, 숫자, 영어대소문자 중 2가지 이상을 포함한 6-20자리 번호
         </div>
 
         <div className="pt-p5 flex flex-col line-break:flex-row line-break:items-center">
           <span className="font-semibold text-small-2 mobile-size:text-mobile-1 tablet-size:text-tablet-1 browser-size:text-browser-2">
-            비밀번호
+            비밀번호 확인
           </span>
           <span className="line-break:ml-m01 font-semibold text-red-600 text-small-0 small-size:text-small-1 mobile-size:text-small-2 tablet-size:text-small-3 browser-size:text-small-4">
-            {!certifiCheck && "올바른 형식의 번호를 입력해주세요"}
-            {!certifiResult &&
-              certifiResult !== "" &&
-              "인증번호가 불일치해요. 번호를 다시 확인해주세요"}
+            {checkPasswordConfirm !== "" &&
+              !checkPasswordConfirm &&
+              "비밀번호가 불일치해요. 번호를 다시 확인해주세요"}
+          </span>
+          <span className="line-break:ml-m01 font-semibold text-green-600 text-small-0 small-size:text-small-1 mobile-size:text-small-2 tablet-size:text-small-3 browser-size:text-small-4">
+            {checkPasswordConfirm && "일치해요"}
           </span>
         </div>
-        <div className="flex justify-between bg-amber-200 w-full mt-m02 aspect-[8/1] mobile-size:aspect-[8/1] tablet-size:aspect-[10/1] rounded-md line-break:rounded-xl tablet-size:rounded-2xl">
+        <div className="flex justify-between bg-myColor-loginInput w-full mt-m02 aspect-[8/1] mobile-size:aspect-[8/1] tablet-size:aspect-[10/1] rounded-md line-break:rounded-xl tablet-size:rounded-2xl">
           <input
-            onChange={handleChangeCertifiValue}
+            ref={passwordConfirmRef}
+            onBlur={handleCheckPasswordSame}
+            onChange={handleChangePasswordConfirm}
             className={`${
-              !certifiCheck &&
-              "border-t-2 border-l-2 border-b-2 border-red-600 border-solid"
-            } tracking-wide mobile-size:tracking-wider tablet-size:-widest browser-size:tracking-wwww text-small-2 mobile-size:text-small-5 tablet-size:text-mobile-5 browser-size:text-big-3  pl-p10 bg-myColor-loginInput w-full rounded-l-md line-break:rounded-l-xl tablet-size:rounded-l-2xl`}
-            value={certifiNum}
-            type="text"
+              checkPasswordConfirm !== "" &&
+              !checkPasswordConfirm &&
+              "border-2 border-red-600 border-solid"
+            } tracking-wide mobile-size:tracking-wider tablet-size:-widest browser-size:tracking-wwww text-small-2 mobile-size:text-small-5 tablet-size:text-mobile-5 browser-size:text-big-3  pl-p10 bg-myColor-loginInput w-full rounded-md line-break:rounded-xl tablet-size:rounded-2xl`}
+            value={passwordConfirm}
+            type="password"
           />
-          <div className="w-w25 line-break:w-w23 tablet-size:w-25  flex justify-center items-center bg-black rounded-r-md line-break:rounded-r-xl tablet-size:rounded-r-2xl">
-            <span className="m-auto text-white text-small-1 mobile-size:text-small-5 tablet-size:text-mobile-3 browser-size:text-big-1">
-              확인
-            </span>
-          </div>
-        </div>
-        <div className="font-extralight pt-p2 text-small-1 mobile-size:text-small-2 tablet-size:text-small-4 browser-size:text-tablet-1">
-          카카오톡으로 전송된 6자리 비밀번호를 확인해주세요
         </div>
       </div>
     </>
